@@ -1,0 +1,289 @@
+/* Common Styles */
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Background Styling */
+body {
+    background: #2ecc71; /* Fallback color */
+    background: linear-gradient(120deg, #2ecc71, #27ae60);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: background 1.0s ease; /* Transition effect for background color */
+}
+
+/* Container Styling */
+.container {
+    background: #ffffff;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    margin-top:200px;
+}
+
+/* Title Styling */
+.container h2 {
+    margin-bottom: 20px;
+    color: #333333;
+    font-size: 24px;
+}
+
+/* Form Group Styling */
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+/* Label Styling */
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333333;
+    font-weight: bold;
+}
+
+/* Input Styling */
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+/* Button Styling */
+button {
+    background: #2ecc71;
+    color: #ffffff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #27ae60;
+}
+
+/* Link Styling */
+p {
+    margin-top: 20px;
+}
+
+p a {
+    color: #2ecc71;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+p a:hover {
+    color: #27ae60;
+}
+
+.header {
+    background-color: #26a269;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 1000;
+}
+
+.section-header {
+    width: 500px;
+}
+
+.log-out {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 30px;
+    text-decoration: none;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    color: white;
+    border-width: 1px;
+    border-style: solid;
+    border-color: red;
+    background-color: red;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.log-out div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.log-out a {
+    text-decoration: none;
+    color: whitesmoke;
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    background-color: lightgreen;
+    color: teal;
+    position: fixed;
+    top: 100px;
+    left: 0;
+    bottom: 0;
+    list-style-type: none;
+    width: 200px;
+    padding-top: 20px;
+}
+
+.sidebar a.active {
+    background-color: #27ae60; /* Change to the desired active background color */
+    color: white; /* Change text color if needed */
+}
+
+/* Sidebar link default styling */
+.sidebar a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: teal;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar ul{
+	text-decoration:none;
+	list-style-type:none;
+	
+}
+
+.sidebar a:hover {
+    background-color: #f6f5f4;
+    color: #333;
+}
+/* Section Styling */
+/* Section Styling */
+.container2 {
+    background: #ffffff;
+    margin-left:220px;
+    margin-top: 120px; /* Adjust as needed */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: calc(100% - 220px); /* Adjust for sidebar width */
+    max-width: 1200px; /* Adjust as needed */
+    height: 900px; /* Set height to half of the viewport height */
+    overflow: auto; /* Add scrollbars if content overflows */
+}
+
+.container-transaction{
+	background: #ffffff;
+	
+    margin-top: 120px; /* Adjust as needed */
+    padding: 20px;
+	border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 300px; /* Adjust for sidebar width */
+    max-width: 1200px; /* Adjust as needed */
+    overflow: auto; /* Add scrollbars if content overflows */
+}
+
+.register-container{
+	
+	
+}
+
+.section {
+    display: flex;
+    justify-content: space-around;
+   
+    height:70px;
+}
+
+.section button {
+    width: 70px;
+    background: #2ecc71;
+    color: #ffffff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    
+    cursor: pointer;
+    transition: background 0.3s;
+    margin: 0 10px;
+}
+
+.section button:hover {
+    background: #27ae60;
+}
+
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+
+      .container2 {
+        width: 90%;
+        margin-left: 0;
+        padding: 20px;
+        height: 60vh; /* Adjusted height for smaller screens */
+    }
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding-top: 10px;
+    }
+
+    .sidebar ul {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .sidebar ul li {
+        text-align: center;
+    }
+
+    .section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .section button {
+        margin: 10px 0;
+        width: 80%;
+    }
+}
