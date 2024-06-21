@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import com.bank.enums.AccountType;
 import com.bank.enums.CreditDebit;
 import com.bank.enums.Gender;
@@ -24,6 +25,7 @@ import com.bank.model.Transaction;
 import com.bank.model.User;
 import com.bank.util.DBConnector;
 
+@SuppressWarnings({ })
 public class DAO {
 
 	public String getPassword(int userId) throws BankException {
@@ -1392,7 +1394,7 @@ public class DAO {
             // Insert transaction record for receiver
             transactionStatement = connection.prepareStatement(insertTransactionQuery);
             transactionStatement.setString(1, transaction.getTransactionId());
-            transactionStatement.setInt(2, transaction.getUserId());
+            transactionStatement.setInt(2, getUserId(transaction.getPayeeAccNo()));
             transactionStatement.setLong(3, transaction.getPayeeAccNo());
             transactionStatement.setLong(4, transaction.getAccountNo());
             transactionStatement.setString(5, CreditDebit.CREDIT.toString());
@@ -1701,18 +1703,6 @@ public class DAO {
         }
     }
 
-    private void closeResources(Connection connection, PreparedStatement preparedStatement, ResultSet resultSet) {
-        if (resultSet != null) {
-            try {
-                resultSet.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        closeResources(connection, preparedStatement);
-    }
-
-
     public boolean isAccountActive(long accountNumber) throws BankException {
         String query = "SELECT account_status FROM account WHERE account_no = ?";
         boolean isActive = false;
@@ -1737,5 +1727,26 @@ public class DAO {
 
         return isActive;
     }
+    
+    public int getUserId(long accountNumber) throws BankException {
+        String query = "SELECT user_id FROM account WHERE account_no = ?";
+        int userId = 0;
+        try (Connection connection = DBConnector.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
+            // Set the parameter for the account number
+            preparedStatement.setLong(1, accountNumber);
+
+            // Execute the query
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    userId = resultSet.getInt("user_id");
+                }
+            }
+        } catch (SQLException e) {
+            throw new BankException("Error fetching user ID", e);
+        }
+
+        return userId;
+    }
 }
